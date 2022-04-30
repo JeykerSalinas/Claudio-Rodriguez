@@ -44,7 +44,7 @@
     <div id="about" class="vh-100">
       <p>Claudio, calidad expresiva (1 subpágina)</p>
     </div>
-    <div id="newspaper" class="vh-100">
+    <div id="newspaper" class="vh-100 bg-danger">
       <p>Reseñas en periódicos (18 subpáginas que a su vez..)</p>
     </div>
     <p>
