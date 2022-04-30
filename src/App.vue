@@ -27,15 +27,15 @@
                 <a class="nav-link" href="#galery">Galerías</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Colecciones</a>
+                <a class="nav-link" href="#collection">Colecciones</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Sobre Claudio</a>
+                <a class="nav-link" href="#about">Sobre Claudio</a>
               </li>
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
-                  href="#"
+                  href="newspaper"
                   id="navbarDropdownMenuLink"
                   role="button"
                   data-bs-toggle="dropdown"

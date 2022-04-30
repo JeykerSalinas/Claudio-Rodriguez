@@ -38,9 +38,15 @@
         </div>
       </div>
     </div>
-    <p>Algunas colecciones que lo albergan (1 subpágina)</p>
-    <p>Claudio, calidad expresiva (1 subpágina)</p>
-    <p>Reseñas en periódicos (18 subpáginas que a su vez..)</p>
+    <div id="collection" class="vh-100">
+      <p>Algunas colecciones que lo albergan (1 subpágina)</p>
+    </div>
+    <div id="about" class="vh-100">
+      <p>Claudio, calidad expresiva (1 subpágina)</p>
+    </div>
+    <div id="newspaper" class="vh-100">
+      <p>Reseñas en periódicos (18 subpáginas que a su vez..)</p>
+    </div>
     <p>
       Catálogos y libros (19 carpetas, que a su vez cada cada una contiene
       varias subpáginas.)
