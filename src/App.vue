@@ -3,7 +3,7 @@
     <div class="shadow">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid justify-content-between">
-          <a class="navbar-brand" href="#">Caudio Rodríguez</a>
+          <a class="navbar-brand" href="#">Claudio Rodríguez</a>
           <button
             class="navbar-toggler"
             type="button"
