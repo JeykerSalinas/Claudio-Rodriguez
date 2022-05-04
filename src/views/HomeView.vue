@@ -51,14 +51,18 @@
       Catálogos y libros (19 carpetas, que a su vez cada cada una contiene
       varias subpáginas.)
     </p>
+    <BackToTop />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-
+import BackToTop from "@/components/BackToTop.vue";
 export default {
   name: "HomeView",
+  components: {
+    BackToTop,
+  },
 };
 </script>
 <style scoped>
