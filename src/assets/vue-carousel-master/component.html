@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <link rel="stylesheet" href="carousel.css">
+</head>
+<body>
+    <section class="section" id="app">
+        <div class="columns">
+            <div class="column is-4">
+                <div class="card">
+                    <div class="card-content">
+                        <carousel
+                            :starting-image="2"
+                            :images="images"
+                            :auto-slide-interval="1500"
+                            :show-progress-bar="true"
+                        ></carousel>
+                        <p>They are taking</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4">
+                <div class="card">
+                    <div class="card-content">
+                        <carousel
+                            :starting-image="0"
+                            :images="images"
+                        ></carousel>
+                        <p>the hobbits</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4">
+                <div class="card">
+                    <div class="card-content">
+                        <carousel
+                            :starting-image="3"
+                            :images="images"                      
+                        ></carousel>
+                        <p>to Isengard</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="carousel.js"></script>
+    <script>
+
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    images: [
+                        {
+                            id: '1',
+                            big: 'images/p1.jpeg',
+                            thumb: 'images/thumbs/p1.jpeg'
+                        },
+                        {
+                            id: '2',
+                            big: 'images/p2.jpeg',
+                            thumb: 'images/thumbs/p2.jpeg'
+                        },
+                        {
+                            id: '3',
+                            big: 'images/p3.jpeg',
+                            thumb: 'images/thumbs/p3.jpeg'
+                        },
+                        {
+                            id: '4',
+                            big: 'images/p4.jpeg',
+                            thumb: 'images/thumbs/p4.jpeg'
+                        }
+                    ]
+                }
+            }
+        });
+    </script>
+</body>
+</html>

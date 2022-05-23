@@ -44,9 +44,7 @@
     <div id="about" class="vh-100">
       <p>Claudio, calidad expresiva (1 subpágina)</p>
     </div>
-    <div id="newspaper" class="vh-100 bg-danger">
-      <p>Reseñas en periódicos (18 subpáginas que a su vez..)</p>
-    </div>
+    <Reviews />
     <p>
       Catálogos y libros (19 carpetas, que a su vez cada cada una contiene
       varias subpáginas.)
@@ -58,10 +56,12 @@
 <script>
 // @ is an alias to /src
 import BackToTop from "@/components/BackToTop.vue";
+import Reviews from "@/components/Reviews.vue";
 export default {
   name: "HomeView",
   components: {
     BackToTop,
+    Reviews,
   },
 };
 </script>

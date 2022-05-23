@@ -6,7 +6,9 @@
         style="position: fixed; right: 5vw; bottom: 5vh"
         v-show="scY > 300"
       >
-        <a href="#" class="btn btn-secondary"> Holi </a>
+        <a href="#" class="btn btn-secondary">
+          <b-icon-chevron-up></b-icon-chevron-up>
+        </a>
       </div>
     </Transition>
   </div>
