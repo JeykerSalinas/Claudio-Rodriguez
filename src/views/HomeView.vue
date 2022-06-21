@@ -3,6 +3,7 @@
     <div id="presentation">
       <p>Presentación (1 subpágina) Hero section</p>
     </div>
+    <ReviewsComponent></ReviewsComponent>
     <div
       id="galery"
       class="d-md-flex justify-content-around p-5 align-items-center"
@@ -44,7 +45,7 @@
     <div id="about" class="vh-100">
       <p>Claudio, calidad expresiva (1 subpágina)</p>
     </div>
-    <Reviews />
+
     <p>
       Catálogos y libros (19 carpetas, que a su vez cada cada una contiene
       varias subpáginas.)
@@ -56,12 +57,12 @@
 <script>
 // @ is an alias to /src
 import BackToTop from "@/components/BackToTop.vue";
-import Reviews from "@/components/Reviews.vue";
+import ReviewsComponent from "@/components/Reviews.vue";
 export default {
   name: "HomeView",
   components: {
     BackToTop,
-    Reviews,
+    ReviewsComponent,
   },
 };
 </script>
