@@ -6,7 +6,6 @@ import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import VueAgile from "vue-agile";
-import "@/assets/style/main.scss";
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
