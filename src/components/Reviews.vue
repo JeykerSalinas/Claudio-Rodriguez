@@ -4,10 +4,13 @@
       <div
         class="col-6 d-flex flex-column justify-content-center align-items-center"
       >
-        <div
-          class="big-review"
-          :style="`background-image: url('img/reviews/${currentImg}')`"
-        ></div>
+        <Transition>
+          <div
+            class="big-review"
+            :style="`background-image: url('img/reviews/${currentImg}')`"
+            v-if="true"
+          ></div>
+        </Transition>
         <h4 class="my-3">{{ texts[indexOfCurrImg] }}</h4>
       </div>
       <div class="col-6">
@@ -118,10 +121,10 @@ export default {
 .big-review {
   width: 60%;
   height: 90%;
-  transition: all 0.5s ease;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  transition: all 0.5s ease-in-out;
 }
 .thumbnails-container {
   gap: 10px;
