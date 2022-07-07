@@ -28,7 +28,7 @@
                 <template #modal-header>
                   <b-button class="btn btn-close"></b-button>
                 </template>
-                <img class="w-100" :src="`img/reviews/${image}`" alt="" />
+                <img class="w-100" :src="`${image}`" alt="" />
               </b-modal>
             </div>
           </div>
