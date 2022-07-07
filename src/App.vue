@@ -20,16 +20,16 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#galery">Galerías</a>
+              <a class="nav-link" href="/#galery">Galerías</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#collection">Colecciones</a>
+              <a class="nav-link" href="/#collection">Colecciones</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#about">Sobre Claudio</a>
+              <a class="nav-link" href="/#about">Sobre Claudio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#reviews">Reseñas</a>
+              <a class="nav-link" href="/#reviews">Reseñas</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -115,11 +115,17 @@
   </div>
 </template>
 <script>
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
   name: "app",
+  methods: {
+    ...mapActions(["getImages"]),
+  },
   computed: {
     ...mapState(["material"]),
+  },
+  created() {
+    this.getImages();
   },
 };
 </script>

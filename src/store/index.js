@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
-
+import { ref, getDownloadURL } from "firebase/storage";
+import { storage } from "@/utils/firebaseconfig";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -203,9 +204,50 @@ export default new Vuex.Store({
       },
       { main: "ZOO", files: ["ZOO 01.bmp", "ZOO 02.bmp"] },
     ],
+    reviews: [
+      "1988RevistaDeEconomiaYNegocios.bmp",
+      "1988TheDailyJournal30Abril.bmp",
+      "1989ElDiarioDeCaracas27DiciembreP24.bmp",
+      "1989UltimasNoticias24DiciembreP51.bmp",
+      "1990ElNacional19NoviembreCArte.bmp",
+      "1990ElNacional27FebreroP.bmp",
+      "1990ElUniversal2JunioCulturales.bmp",
+      "1990ElUniversal27MayoCulturales.bmp",
+      "1991ElNacional2OMarzo.bmp",
+      "1991ElNacional15MarzoCulturales.bmp",
+      "1991ElNacional17MarzoArte20.bmp",
+      "1991ElUniversal13DeMayo.bmp",
+      "1991ElUniversal17MarzoP42.bmp",
+      "1991ElUniversal24MarzoCulturales.bmp",
+      "1991ElUniversal26MarzoPC10.bmp",
+      "1992ElNacional9DeOctubrePC18.bmp",
+      "1992ElNacional10DeJunioPC12.bmp",
+      "1992ElUniversal13OctubreP42.bmp",
+      "1994ElUniversal28Enero.bmp",
+      "foto_1.bmp",
+      "PeriodicoSinIdentificar1986Circa.bmp",
+    ],
+    reviewsUrls: [],
   },
   getters: {},
-  mutations: {},
-  actions: {},
+  mutations: {
+    SET_REVIEWS_URLS(state, payload) {
+      state.reviewsUrls.push(payload);
+    },
+  },
+  actions: {
+    async getImages({ commit, state }) {
+      state.reviews.forEach(async (review) => {
+        const response = await getDownloadURL(
+          ref(storage, `reviews/${review}`)
+        );
+        try {
+          commit("SET_REVIEWS_URLS", response);
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    },
+  },
   modules: {},
 });

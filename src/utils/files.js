@@ -1,6 +1,7 @@
 const getFiles = (path) => {
   const fs = require("fs");
   const files = fs.readdirSync(path);
+  console.log(files);
   return files;
 };
 let myFiles = [];
@@ -11,5 +12,3 @@ getFiles("/home/jeyker/Documents/CATALOGOS Y LIBROS").map((file) => {
     files: getFiles(`/home/jeyker/Documents/CATALOGOS Y LIBROS/${file}`),
   });
 });
-
-console.log(myFiles);

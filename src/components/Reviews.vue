@@ -17,14 +17,17 @@
         <div class="h-100 d-flex align-items-center p-3">
           <div class="thumbnails-container d-flex flex-wrap">
             <div
-              v-for="(image, i) in images"
+              v-for="(image, i) in reviewsUrls"
               :key="i"
               class="thumbnails"
               :class="i === indexOfCurrImg ? 'current-image' : ''"
-              :style="`background-image: url('img/reviews/${image}')`"
+              :style="`background-image: url(${image})`"
               @click="$bvModal.show(`modal-${i}`)"
             >
               <b-modal size="xl" :id="`modal-${i}`" title="BootstrapVue">
+                <template #modal-header>
+                  <b-button class="btn btn-close"></b-button>
+                </template>
                 <img class="w-100" :src="`img/reviews/${image}`" alt="" />
               </b-modal>
             </div>
@@ -37,6 +40,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "ReviewsComponent",
   data() {
@@ -110,6 +114,7 @@ export default {
     indexOfCurrImg() {
       return this.images.indexOf(this.currentImg);
     },
+    ...mapState(["reviewsUrls"]),
   },
 };
 </script>
