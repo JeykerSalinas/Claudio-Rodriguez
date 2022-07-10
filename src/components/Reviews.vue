@@ -34,39 +34,60 @@
       </div>
     </div> -->
     <div>
-      <div class="">
+      <div class="py-3 mb-3">
         <Transition>
           <div
-            class="big-review zoom-in"
-            :style="`background-image: url(${reviews[1]})`"
-            @click="$bvModal.show(`modal-${reviews[1]}`)"
+            class="big-review zoom-in mx-auto"
+            :style="`background-image: url(${currentImg})`"
+            @click="$bvModal.show(`modal-${1}`)"
             v-if="true"
           ></div>
         </Transition>
-        <b-modal size="xl" :id="`modal-${reviews[1]}`" title="BootstrapVue">
-          <template #modal-header>
-            <b-button class="btn btn-close"></b-button>
-          </template>
-          <img class="w-100" :src="reviews[1]" alt="" />
-        </b-modal>
       </div>
       <div class="d-flex align-items-center justify-content-center mx-3">
         <div>
-          <span role="button" class="fw-bold" @click="scroll"
+          <span role="button" class="fw-bold" @click="scroll('left')"
             ><b-icon icon="chevron-left" font-scale="1.5"></b-icon
           ></span>
         </div>
-        <div class="reviews-container d-flex overflow-auto py-2 mx-3">
-          <div class="review-container" v-for="review in reviews" :key="review">
+        <div
+          id="reviews-container"
+          class="reviews-container d-flex overflow-auto py-2 mx-3"
+        >
+          <div
+            class="review-container"
+            v-for="(review, i) in reviews"
+            :key="review"
+          >
             <div
               role="button"
-              :style="{ 'background-image': 'url(' + review + ')' }"
               class="review-card"
+              :style="{ 'background-image': 'url(' + review + ')' }"
+              @click="setCurrImg(review)"
             ></div>
+            <b-modal
+              size="xl"
+              :scrollable="true"
+              :id="`modal-${i}`"
+              body-bg-variant="dark"
+            >
+              <template #modal-header>
+                <b-button
+                  class="btn btn-close"
+                  @click="$bvModal.hide(`modal-${i}`)"
+                ></b-button>
+              </template>
+              <div>
+                <img class="w-100" :src="reviews[1]" alt="" />
+              </div>
+              <template #modal-footer>
+                <span></span>
+              </template>
+            </b-modal>
           </div>
         </div>
         <div>
-          <span role="button" class="fw-bold"
+          <span role="button" class="fw-bold" @click="scroll('right')"
             ><b-icon icon="chevron-right" font-scale="1.5"></b-icon
           ></span>
         </div>
@@ -79,6 +100,11 @@
 import { mapState } from "vuex";
 export default {
   name: "ReviewsComponent",
+  data() {
+    return {
+      currentImg: "",
+    };
+  },
   methods: {
     // toggleImg() {
     //   setInterval(() => {
@@ -88,10 +114,27 @@ export default {
     //         : this.images[this.indexOfCurrImg + 1];
     //   }, 5000);
     // },
-    scroll() {},
+    scroll(direction) {
+      const reviews = document.getElementById("reviews-container");
+      const right = {
+        top: 0,
+        left: reviews.scrollLeft + 157,
+        behavior: "smooth",
+      };
+      const left = {
+        top: 0,
+        left: reviews.scrollLeft - 157,
+        behavior: "smooth",
+      };
+      direction === "right" ? reviews.scrollTo(right) : reviews.scrollTo(left);
+    },
+    setCurrImg(review) {
+      this.currentImg = review;
+    },
   },
   created() {
     // this.toggleImg();
+    this.currentImg = this.reviews[0];
   },
   computed: {
     // currImg() {
@@ -110,13 +153,14 @@ export default {
   color: #fff;
 }
 .big-review {
-  width: 30vw;
-  height: 30vw;
+  width: 40vw;
+  height: 40vw;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   transition: all 0.5s ease-in-out;
 }
+
 .thumbnails-container {
   gap: 10px;
   .thumbnails {
@@ -134,11 +178,11 @@ export default {
   }
 }
 .reviews-container {
-  gap: 15px;
+  gap: 14px;
   .review-container {
     .review-card {
-      width: 200px;
-      height: 200px;
+      width: 150px;
+      height: 150px;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -158,7 +202,5 @@ export default {
   background-color: #68645c;
   border-radius: 2px;
 }
-// #reviews {
-//   height: 90vh;
-// }
+/* we will explain what these classes do next! */
 </style>

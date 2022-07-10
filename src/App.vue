@@ -20,19 +20,19 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ms-auto px-4 me-5">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#about">Sobre Claudio</a>
+              <a class="nav-link" href="#reviews">Reseñas</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#galery">Galerías</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#collection">Colecciones</a>
+              <a class="nav-link" href="/about">Sobre Claudio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#reviews">Reseñas</a>
+              <a class="nav-link" href="#collection">Colecciones</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -83,7 +83,7 @@ export default {
   methods: {
     ...mapActions(["getImages", "getMetaData"]),
     watchScroll() {
-      if (window.scrollY > 350) {
+      if (window.scrollY > 350 && this.$route.name === "home") {
         return "dark-bg";
       } else return "bg-transparent";
     },
@@ -92,8 +92,8 @@ export default {
     ...mapState(["material"]),
   },
   created() {
-    this.getImages();
     this.getMetaData();
+    this.$route.name !== "home" ? (this.isShow = "dark-bg") : "";
     window.addEventListener("scroll", () => {
       this.isShow = this.watchScroll();
     });

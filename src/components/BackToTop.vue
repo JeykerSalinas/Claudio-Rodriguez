@@ -6,7 +6,7 @@
         style="position: fixed; right: 5vw; bottom: 5vh"
         v-show="scY > 300"
       >
-        <a href="#" class="btn btn-secondary">
+        <a role="button" @click="scrollToTop" class="btn btn-secondary">
           <b-icon-chevron-up></b-icon-chevron-up>
         </a>
       </div>
@@ -33,6 +33,12 @@ export default {
         clearTimeout(this.scTimer);
         this.scTimer = 0;
       }, 100);
+    },
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     },
   },
 };
