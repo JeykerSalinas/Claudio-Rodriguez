@@ -1,0 +1,20 @@
+$color-white: #f2f2f2;
+$color-light: #f5f4ee;
+$color-dark: #403d39;
+
+$color-silver-dark: #343a40;
+$color-silver-light: #f8f9fa;
+
+.dark-bg {
+  background-color: $color-dark;
+  color: $color-white;
+}
+
+.light-bg {
+  background-color: $color-light;
+}
+
+.oswald {
+  font-family: 'Oswald', sans-serif;
+}
+.zoom-in {cursor: zoom-in;}

@@ -1,26 +1,24 @@
 <template>
-  <div id="reviews" class="container-fluid bg-dark py-5">
-    <div class="row">
+  <div id="reviews" class="container-fluid dark-bg py-5">
+    <!-- <div class="row">
       <div
         class="col-6 d-flex flex-column justify-content-center align-items-center"
       >
         <Transition>
           <div
             class="big-review"
-            :style="`background-image: url('img/reviews/${currentImg}')`"
+            :style="`background-image: url(${reviews[0]})`"
             v-if="true"
           ></div>
         </Transition>
-        <h4 class="my-3">{{ texts[indexOfCurrImg] }}</h4>
       </div>
       <div class="col-6">
         <div class="h-100 d-flex align-items-center p-3">
           <div class="thumbnails-container d-flex flex-wrap">
             <div
-              v-for="(image, i) in reviewsUrls"
+              v-for="(image, i) in reviews"
               :key="i"
               class="thumbnails"
-              :class="i === indexOfCurrImg ? 'current-image' : ''"
               :style="`background-image: url(${image})`"
               @click="$bvModal.show(`modal-${i}`)"
             >
@@ -34,8 +32,46 @@
           </div>
         </div>
       </div>
+    </div> -->
+    <div>
+      <div class="">
+        <Transition>
+          <div
+            class="big-review zoom-in"
+            :style="`background-image: url(${reviews[1]})`"
+            @click="$bvModal.show(`modal-${reviews[1]}`)"
+            v-if="true"
+          ></div>
+        </Transition>
+        <b-modal size="xl" :id="`modal-${reviews[1]}`" title="BootstrapVue">
+          <template #modal-header>
+            <b-button class="btn btn-close"></b-button>
+          </template>
+          <img class="w-100" :src="reviews[1]" alt="" />
+        </b-modal>
+      </div>
+      <div class="d-flex align-items-center justify-content-center mx-3">
+        <div>
+          <span role="button" class="fw-bold" @click="scroll"
+            ><b-icon icon="chevron-left" font-scale="1.5"></b-icon
+          ></span>
+        </div>
+        <div class="reviews-container d-flex overflow-auto py-2 mx-3">
+          <div class="review-container" v-for="review in reviews" :key="review">
+            <div
+              role="button"
+              :style="{ 'background-image': 'url(' + review + ')' }"
+              class="review-card"
+            ></div>
+          </div>
+        </div>
+        <div>
+          <span role="button" class="fw-bold"
+            ><b-icon icon="chevron-right" font-scale="1.5"></b-icon
+          ></span>
+        </div>
+      </div>
     </div>
-    <div></div>
   </div>
 </template>
 
@@ -43,78 +79,28 @@
 import { mapState } from "vuex";
 export default {
   name: "ReviewsComponent",
-  data() {
-    return {
-      images: [
-        "1988RevistaDeEconomiaYNegocios.bmp",
-        "1988TheDailyJournal30Abril.bmp",
-        "1989ElDiarioDeCaracas27DiciembreP24.bmp",
-        "1989UltimasNoticias24DiciembreP51.bmp",
-        "1990ElNacional19NoviembreCArte.bmp",
-        "1990ElNacional27FebreroP.bmp",
-        "1990ElUniversal2JunioCulturales.bmp",
-        "1990ElUniversal27MayoCulturales.bmp",
-        "1991ElNacional2OMarzo.bmp",
-        "1991ElNacional15MarzoCulturales.bmp",
-        "1991ElNacional17MarzoArte20.bmp",
-        "1991ElUniversal13DeMayo.bmp",
-        "1991ElUniversal17MarzoP42.bmp",
-        "1991ElUniversal24MarzoCulturales.bmp",
-        "1991ElUniversal26MarzoPC10.bmp",
-        "1992ElNacional9DeOctubrePC18.bmp",
-        "1992ElNacional10DeJunioPC12.bmp",
-        "1992ElUniversal13OctubreP42.bmp",
-        "1994ElUniversal28Enero.bmp",
-        "foto_1.bmp",
-        "PeriodicoSinIdentificar1986Circa.bmp",
-      ],
-      texts: [
-        "1988 Revista de Economía y Negocios",
-        "1988 The Daily Journal 30 Abril",
-        "1989 El Diario de Caracas 27 Diciembre P 24",
-        "1989 Ultimas Noticias 24 Diciembre P 51",
-        "1990 El Nacional 19 Noviembre Carte",
-        "1990 El Nacional 27 Febrero P",
-        "1990 El Universal 2 Junio Culturales",
-        "1990 El Universal 27 Mayo Culturales",
-        "1991 El Nacional 2O Marzo",
-        "1991 El Nacional 15 Marzo Culturales",
-        "1991 El Nacional 17 Marzo Arte 20",
-        "1991 El Universal 13 De Mayo",
-        "1991 El Universal 17 Marzo P 42",
-        "1991 El Universal 24 Marzo Culturales",
-        "1991 El Universal 26 Marzo PC 10",
-        "1992 El Nacional 9 De Octubre PC 18",
-        "1992 El Nacional 10 De Junio PC 12",
-        "1992 El Universal 13 Octubre P 42",
-        "1994 El Universal 28 Enero",
-        "",
-        "Periodico Sin Identificar 1986 Circa",
-      ],
-      currentImg: "1988RevistaDeEconomiaYNegocios.bmp",
-    };
-  },
   methods: {
-    toggleImg() {
-      setInterval(() => {
-        this.currentImg =
-          this.indexOfCurrImg === this.images.length - 1
-            ? this.images[0]
-            : this.images[this.indexOfCurrImg + 1];
-      }, 5000);
-    },
+    // toggleImg() {
+    //   setInterval(() => {
+    //     this.currentImg =
+    //       this.indexOfCurrImg === this.images.length - 1
+    //         ? this.images[0]
+    //         : this.images[this.indexOfCurrImg + 1];
+    //   }, 5000);
+    // },
+    scroll() {},
   },
   created() {
-    this.toggleImg();
+    // this.toggleImg();
   },
   computed: {
-    currImg() {
-      return this.currentImg;
-    },
-    indexOfCurrImg() {
-      return this.images.indexOf(this.currentImg);
-    },
-    ...mapState(["reviewsUrls"]),
+    // currImg() {
+    //   return this.currentImg;
+    // },
+    // indexOfCurrImg() {
+    //   return this.images.indexOf(this.currentImg);
+    // },
+    ...mapState(["reviews"]),
   },
 };
 </script>
@@ -124,8 +110,8 @@ export default {
   color: #fff;
 }
 .big-review {
-  width: 60%;
-  height: 90%;
+  width: 30vw;
+  height: 30vw;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -147,4 +133,32 @@ export default {
     transform: scale(1.08);
   }
 }
+.reviews-container {
+  gap: 15px;
+  .review-container {
+    .review-card {
+      width: 200px;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: all 0.1s ease-in-out;
+      opacity: 0.7;
+      &:hover {
+        transform: scale(1.04);
+        opacity: 1;
+      }
+    }
+  }
+}
+.reviews-container::-webkit-scrollbar {
+  height: 4px;
+}
+.reviews-container::-webkit-scrollbar-thumb {
+  background-color: #68645c;
+  border-radius: 2px;
+}
+// #reviews {
+//   height: 90vh;
+// }
 </style>

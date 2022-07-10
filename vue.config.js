@@ -5,4 +5,11 @@ module.exports = defineConfig({
 
 module.exports = {
   publicPath: "/Claudio-Rodriguez/",
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `@import "@/assets/style/main.scss";`,
+      },
+    },
+  },
 };
