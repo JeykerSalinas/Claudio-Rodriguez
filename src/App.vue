@@ -23,13 +23,15 @@
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#reviews">Reseñas</a>
+              <router-link class="nav-link" to="#reviews">Reseñas</router-link>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#galery">Galerías</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/about">Sobre Claudio</a>
+              <router-link class="nav-link" to="about"
+                >Sobre Claudio</router-link
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#collection">Colecciones</a>
